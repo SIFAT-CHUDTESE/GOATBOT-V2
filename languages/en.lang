@@ -1,0 +1,166 @@
+# index.js
+Goat.newVersionDetected=ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠᴇʀꜱɪᴏɴ %1, ᴛʜᴇ ʟᴀᴛᴇꜱᴛ ᴠᴇʀꜱɪᴏɴ ɪꜱ %2. ᴜᴘᴅᴀᴛᴇ ɴᴏᴡ ᴛᴏ ɢᴇᴛ ᴛʜᴇ ʙᴇꜱᴛ ᴇxᴘᴇʀɪᴇɴᴄᴇ — ʀᴜɴ: %3
+Goat.autoRestart1=ʙᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ-ʀᴇꜱᴛᴀʀᴛ ɪɴ %1
+Goat.autoRestart2=ʙᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ-ʀᴇꜱᴛᴀʀᴛ ᴠɪᴀ ᴄʀᴏɴ ᴊᴏʙ: %1
+Goat.googleApiTokenExpired=ɢᴏᴏɢʟᴇ ᴀᴘɪ ʀᴇғʀᴇꜱʜ ᴛᴏᴋᴇɴ ʜᴀꜱ ᴇxᴘɪʀᴇᴅ ᴏʀ ʙᴇᴇɴ ʀᴇᴠᴏᴋᴇᴅ. ɢᴇᴛ ᴀ ɴᴇᴡ ᴛᴏᴋᴇɴ ʜᴇʀᴇ: https://developers.google.com/oauthplayground/
+
+# bot/login/login.js
+login.currentlyLogged=ʟᴏɢɪɴ ɪɴ ᴘʀᴏɢʀᴇꜱꜱ...
+login.notFoundDirAccount=ᴄᴀɴɴᴏᴛ ғɪɴᴅ ғɪʟᴇ %1
+login.loginToken=ʟᴏɢɢɪɴɢ ɪɴ ᴡɪᴛʜ ᴀᴄᴄᴇꜱꜱ ᴛᴏᴋᴇɴ
+login.loginCookieString=ʟᴏɢɢɪɴɢ ɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ ꜱᴛʀɪɴɢ
+login.loginCookieNetscape=ʟᴏɢɢɪɴɢ ɪɴ ᴡɪᴛʜ ɴᴇᴛꜱᴄᴀᴘᴇ ᴄᴏᴏᴋɪᴇ
+login.loginCookieArray=ʟᴏɢɢɪɴɢ ɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ
+login.loginPassword=ʟᴏɢɢɪɴɢ ɪɴ ᴡɪᴛʜ ᴇᴍᴀɪʟ & ᴘᴀꜱꜱᴡᴏʀᴅ...
+login.accountError=ᴘʟᴇᴀꜱᴇ ᴇɴᴛᴇʀ ᴀ ᴠᴀʟɪᴅ ᴛᴏᴋᴇɴ (%1) ᴏʀ ᴄᴏᴏᴋɪᴇ ꜱᴛʀɪɴɢ (%2) ᴏʀ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ:\n[\n  { name: %3, value: %4 },\n  { name: %5, value: %6 }\n]\n ᴏʀ\n[\n  { key: %3, value: %4 },\n  { key: %5, value: %6 }\n]\nɪɴᴛᴏ ᴛʜᴇ ғɪʟᴇ %7
+login.cannotFindAccount=ᴄᴏᴜʟᴅ ɴᴏᴛ ғɪɴᴅ ᴀ ғᴀᴄᴇʙᴏᴏᴋ ᴀᴄᴄᴏᴜɴᴛ. ᴘʟᴇᴀꜱᴇ ᴄʜᴏᴏꜱᴇ ᴀɴ ᴏᴘᴛɪᴏɴ ʙᴇʟᴏᴡ:
+login.chooseAccount=ʟᴏɢɪɴ ᴡɪᴛʜ ᴇᴍᴀɪʟ & ᴘᴀꜱꜱᴡᴏʀᴅ
+login.chooseToken=ʟᴏɢɪɴ ᴡɪᴛʜ ғᴜʟʟ-ᴘᴇʀᴍɪꜱꜱɪᴏɴ ᴛᴏᴋᴇɴ
+login.chooseCookieString=ʟᴏɢɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ ꜱᴛʀɪɴɢ
+login.chooseCookieArray=ʟᴏɢɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ
+login.loginWith=ʏᴏᴜ ᴄʜᴏꜱᴇ: %1
+login.inputEmail=» ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴇᴍᴀɪʟ, ɪᴅ ᴏʀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ:
+login.inputPassword=» ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴘᴀꜱꜱᴡᴏʀᴅ:
+login.input2FA=» ᴇɴᴛᴇʀ ʏᴏᴜʀ 2FA ᴄᴏᴅᴇ (ʟᴇᴀᴠᴇ ʙʟᴀɴᴋ ɪғ ɴᴏᴛ ᴇɴᴀʙʟᴇᴅ):
+login.inputToken=» ᴇɴᴛᴇʀ ʏᴏᴜʀ ғᴜʟʟ-ᴘᴇʀᴍɪꜱꜱɪᴏɴ ᴛᴏᴋᴇɴ (ꜱᴛᴀʀᴛꜱ ᴡɪᴛʜ EAAAA):
+login.inputCookieString=» ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴄᴏᴏᴋɪᴇ ꜱᴛʀɪɴɢ:
+login.inputCookieArray=» ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ:
+login.refreshCookie=ʀᴇғʀᴇꜱʜɪɴɢ ᴄᴏᴏᴋɪᴇ...
+login.refreshCookieError=ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ʀᴇғʀᴇꜱʜɪɴɢ ᴛʜᴇ ᴄᴏᴏᴋɪᴇ
+login.refreshCookieSuccess=ᴄᴏᴏᴋɪᴇ ʀᴇғʀᴇꜱʜᴇᴅ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ! ʀᴇꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴀᴘᴘʟʏ ᴛʜᴇ ɴᴇᴡ ᴄᴏᴏᴋɪᴇ
+login.refreshCookieWarning=ᴀᴜᴛᴏ ʀᴇғʀᴇꜱʜ ᴄᴏᴏᴋɪᴇ ɪꜱ ᴇɴᴀʙʟᴇᴅ, ʙᴜᴛ ᴇᴍᴀɪʟ & ᴘᴀꜱꜱᴡᴏʀᴅ ᴀʀᴇ ɴᴏᴛ ᴄᴏɴғɪɢᴜʀᴇᴅ ɪɴ config.json
+login.tokenError=ᴛᴏᴋᴇɴ ɪꜱ ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ. ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ᴠᴀʟɪᴅ ᴛᴏᴋᴇɴ (%1) ɪɴ ᴛʜᴇ ғɪʟᴇ %2
+login.cookieError=ᴄᴏᴏᴋɪᴇ ɪꜱ ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ.
+login.loginPasswordError=ʟᴏɢɪɴ ғᴀɪʟᴇᴅ ᴜꜱɪɴɢ ᴇᴍᴀɪʟ & ᴘᴀꜱꜱᴡᴏʀᴅ ғʀᴏᴍ config.json
+login.loginSuccess=✅ ʟᴏɢɪɴ ꜱᴜᴄᴄᴇꜱꜱғᴜʟ!
+login.loginError=ʟᴏɢɪɴ ғᴀɪʟᴇᴅ. ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ.
+login.openDashboardSuccess=✅ ʙᴏᴛ ᴅᴀꜱʜʙᴏᴀʀᴅ ᴏᴘᴇɴᴇᴅ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ
+login.openDashboardError=ᴄᴏᴜʟᴅ ɴᴏᴛ ᴏᴘᴇɴ ᴛʜᴇ ʙᴏᴛ ᴅᴀꜱʜʙᴏᴀʀᴅ
+login.changeGbanData=⚠️ ᴅᴀᴛᴀ ʜᴀꜱ ʙᴇᴇɴ ᴛᴀᴍᴘᴇʀᴇᴅ — ʙᴏᴛ ʟᴀᴜɴᴄʜ ɪꜱ ʙʟᴏᴄᴋᴇᴅ
+login.errorNoti=ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ʀᴇᴛʀɪᴇᴠɪɴɢ ᴍᴇꜱꜱᴀɢᴇꜱ
+login.refreshFbstateSuccess=✅ %1 ʀᴇғʀᴇꜱʜᴇᴅ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ
+login.refreshFbstateError=ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ʀᴇғʀᴇꜱʜɪɴɢ %1
+login.youAreBanned=🚫 ʏᴏᴜ ʜᴀᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴛʜᴇ Goat-Bot ᴘʀᴏᴊᴇᴄᴛ
+login.runBot=🚀 ʙᴏᴛ ʟᴀᴜɴᴄʜᴇᴅ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ — ɴᴏᴡ ʀᴇᴄᴇɪᴠɪɴɢ ᴍᴇꜱꜱᴀɢᴇꜱ
+login.notLoggedIn=ʟᴏɢɪɴ ᴇʀʀᴏʀ — ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ʏᴏᴜʀ ғᴀᴄᴇʙᴏᴏᴋ ᴀᴄᴄᴏᴜɴᴛ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ
+login.callBackError=ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ɪɴ ᴛʜᴇ listenMqtt ᴄᴀʟʟʙᴀᴄᴋ
+login.userBanned=🚫 ʏᴏᴜ'ᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴜꜱɪɴɢ ᴛʜɪꜱ ʙᴏᴛ
+login.checkGbanError=ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ᴄʜᴇᴄᴋɪɴɢ GBAN. ᴘʟᴇᴀꜱᴇ ᴜᴘᴅᴀᴛᴇ ᴛᴏ ᴛʜᴇ ʟᴀᴛᴇꜱᴛ ᴠᴇʀꜱɪᴏɴ (ʀᴜɴ: node update)
+login.gbanMessage=🚫 ʙᴀɴɴᴇᴅ ғʀᴏᴍ Goat-Bot ᴏɴ %1\n» ʀᴇᴀꜱᴏɴ: %2\n» ᴛɪᴍᴇ: %3
+login.gbanMessageToDate=🚫 ʙᴀɴɴᴇᴅ ғʀᴏᴍ Goat-Bot ᴏɴ %1\n» ʀᴇᴀꜱᴏɴ: %2\n» ᴛɪᴍᴇ: %3\n» ᴜɴᴛɪʟ: %4
+login.gbanAdminMessage=ᴜꜱᴇʀ %1 ʜᴀꜱ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ғʀᴏᴍ Goat-Bot ᴏɴ %2\n» ʀᴇᴀꜱᴏɴ: %3
+login.openServerUptimeSuccess=🚀 ᴜᴘᴛɪᴍᴇ ꜱᴇʀᴠᴇʀ ᴀᴄᴛɪᴠᴇ: %1
+login.openServerUptimeError=ғᴀɪʟᴇᴅ ᴛᴏ ꜱᴛᴀʀᴛ ᴜᴘᴛɪᴍᴇ ꜱᴇʀᴠᴇʀ
+login.restartListenMessage=ListenMQTT ᴀᴜᴛᴏ-ʀᴇꜱᴛᴀʀᴛ ᴇɴᴀʙʟᴇᴅ ᴇᴠᴇʀʏ %1
+login.stopRestartListenMessage=ListenMQTT ᴀᴜᴛᴏ-ʀᴇꜱᴛᴀʀᴛ ᴅɪꜱᴀʙʟᴇᴅ
+login.restartListenMessageError=ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ʀᴇꜱᴛᴀʀᴛɪɴɢ ListenMQTT
+login.restartListenMessage2=✅ ListenMQTT ʀᴇꜱᴛᴀʀᴛᴇᴅ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ
+login.refreshCookieAfter=ʀᴇғʀᴇꜱʜɪɴɢ ᴄᴏᴏᴋɪᴇ ɪɴ %1
+login.listenMqttClose=ListenMQTT ᴄᴏɴɴᴇᴄᴛɪᴏɴ ᴄʟᴏꜱᴇᴅ
+login.listenMqttCloseByUser=ListenMQTT ᴄʟᴏꜱᴇᴅ ʙʏ ᴜꜱᴇʀ
+login.retryCheckLiveCookie=ʀᴇᴛʀʏɪɴɢ ᴄᴏᴏᴋɪᴇ ᴄʜᴇᴄᴋ... %1
+login.startBotSuccess=✅ ʙᴏᴛ ɪꜱ ᴜᴘ ᴀɴᴅ ʀᴜɴɴɪɴɢ — ʀᴇᴀᴅʏ ᴛᴏ ʀᴇᴄᴇɪᴠᴇ ᴍᴇꜱꜱᴀɢᴇꜱ
+
+version.tooOldVersion=⚠️ ʏᴏᴜʀ ᴠᴇʀꜱɪᴏɴ ᴏғ Goat-Bot ɪꜱ ᴏᴜᴛᴅᴀᴛᴇᴅ. ᴜᴘᴅᴀᴛᴇ ɴᴏᴡ ʙʏ ʀᴜɴɴɪɴɢ: %1
+
+# bot/custom.js
+custom.refreshedFb_dtsg=✅ fb_dtsg ᴀɴᴅ jazoest ʀᴇғʀᴇꜱʜᴇᴅ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ
+custom.refreshedFb_dtsgError=ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ʀᴇғʀᴇꜱʜɪɴɢ fb_dtsg ᴀɴᴅ jazoest
+
+# bot/login/loadData.js
+loadData.loadThreadDataSuccess=✅ ʟᴏᴀᴅᴇᴅ ᴅᴀᴛᴀ ғᴏʀ %1 ɢʀᴏᴜᴘ(ꜱ)
+loadData.loadUserDataSuccess=✅ ʟᴏᴀᴅᴇᴅ ᴅᴀᴛᴀ ғᴏʀ %1 ᴜꜱᴇʀ(ꜱ)
+loadData.refreshingThreadData=ᴜᴘᴅᴀᴛɪɴɢ ɢʀᴏᴜᴘ ɪɴғᴏʀᴍᴀᴛɪᴏɴ...
+loadData.refreshThreadDataSuccess=✅ ᴜᴘᴅᴀᴛᴇᴅ ɪɴғᴏ ғᴏʀ %1 ɢʀᴏᴜᴘ
+loadData.refreshThreadDataError=ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ ᴡʜɪʟᴇ ᴜᴘᴅᴀᴛɪɴɢ ɢʀᴏᴜᴘ ɪɴғᴏ
+
+# bot/login/loadScripts.js
+loadScripts.loadScriptsError=ᴇʀʀᴏʀ ʟᴏᴀᴅɪɴɢ %1 ғɪʟᴇ(ꜱ):
+loadScripts.loadScriptsNotMatchOrigin=⚠️ %1 ғɪʟᴇ(ꜱ) ᴅᴏ ɴᴏᴛ ᴍᴀᴛᴄʜ ᴛʜᴇ ᴏʀɪɢɪɴᴀʟ. ᴠᴇʀɪғʏ ᴛʜᴇꜱᴇ ғɪʟᴇꜱ ᴀʀᴇ ᴛʀᴜꜱᴛᴇᴅ:
+loadScripts.NOT_FOUND=ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴏʀɪɢɪɴᴀʟ ꜱᴏᴜʀᴄᴇ:
+loadScripts.NOT_MATCH=ᴅᴏᴇꜱ ɴᴏᴛ ᴍᴀᴛᴄʜ ᴏʀɪɢɪɴᴀʟ ꜱᴏᴜʀᴄᴇ:
+
+# bot/login/socketIO.js
+socketIO.connected=✅ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ socket.io ꜱᴇʀᴠᴇʀ
+socketIO.error=ᴄᴏᴜʟᴅ ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛ ᴛᴏ ᴛʜᴇ socket.io ꜱᴇʀᴠᴇʀ
+
+# bot/handler/handlerCheckData.js
+handlerCheckData.cantCreateThread=ᴜɴᴀʙʟᴇ ᴛᴏ ᴡʀɪᴛᴇ ɢʀᴏᴜᴘ (ɪᴅ: '%1') ᴛᴏ ᴛʜᴇ ᴅᴀᴛᴀʙᴀꜱᴇ
+handlerCheckData.cantCreateUser=ᴜɴᴀʙʟᴇ ᴛᴏ ᴡʀɪᴛᴇ ᴜꜱᴇʀ (ɪᴅ: '%1') ᴛᴏ ᴛʜᴇ ᴅᴀᴛᴀʙᴀꜱᴇ
+
+# bot/handler/handlerEvents.js
+handlerEvents.userBanned=ꜱᴏʀʀʏ, ʙᴜᴛ ɪ ᴄᴀɴ'ᴛ ᴛᴀʟᴋ ᴛᴏ ʏᴏᴜ ʀɪɢʜᴛ ɴᴏᴡ — ʏᴏᴜ'ᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ.\n» ʀᴇᴀꜱᴏɴ: %1\n» ʙᴀɴɴᴇᴅ ᴀᴛ: %2\n» ʏᴏᴜʀ ɪᴅ: %3
+handlerEvents.threadBanned=ɪ'ᴍ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ ᴛᴏ ᴏᴘᴇʀᴀᴛᴇ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ — ɪᴛ'ꜱ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ.\n» ʀᴇᴀꜱᴏɴ: %1\n» ʙᴀɴɴᴇᴅ ᴀᴛ: %2\n» ɢʀᴏᴜᴘ ɪᴅ: %3
+handlerEvents.onlyAdminBox=ɪ ᴄᴀɴ ᴏɴʟʏ ʀᴇꜱᴘᴏɴᴅ ᴛᴏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴꜱ ʜᴇʀᴇ.
+handlerEvents.onlyAdminBot=ɪ ᴄᴀɴ ᴏɴʟʏ ᴅᴏ ᴛʜɪꜱ ꜰᴏʀ ᴍʏ ᴀᴅᴍɪɴꜱ.
+handlerEvents.commandNotFound=ɪ ᴅᴏɴ'ᴛ ᴋɴᴏᴡ ᴀɴʏ ᴄᴏᴍᴍᴀɴᴅ ᴄᴀʟʟᴇᴅ "%1". ᴛʀʏ %2help ᴛᴏ ꜱᴇᴇ ᴡʜᴀᴛ ɪ ᴄᴀɴ ᴅᴏ!
+handlerEvents.commandNotFound2=ɪ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴀᴛ ᴄᴏᴍᴍᴀɴᴅ. ᴛʀʏ %1help ᴛᴏ ꜱᴇᴇ ᴇᴠᴇʀʏᴛʜɪɴɢ ɪ ᴄᴀɴ ᴅᴏ!
+handlerEvents.commandSyntaxError=ᴛʜᴀᴛ'ꜱ ɴᴏᴛ ᴛʜᴇ ʀɪɢʜᴛ ᴡᴀʏ ᴛᴏ ᴜꜱᴇ ɪᴛ. ᴄʜᴇᴄᴋ %1help %2 ᴛᴏ ꜱᴇᴇ ʜᴏᴡ ɪᴛ ᴡᴏʀᴋꜱ.
+handlerEvents.onlyAdmin=ɪ ᴄᴀɴ'ᴛ ʟᴇᴛ ʏᴏᴜ ᴜꜱᴇ "%1" — ᴛʜᴀᴛ'ꜱ ꜰᴏʀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴꜱ ᴏɴʟʏ.
+handlerEvents.onlyAdminToUseOnReply=ɪ ᴄᴀɴ'ᴛ ᴘʀᴏᴄᴇꜱꜱ ʏᴏᴜʀ ʀᴇᴘʟʏ ᴛᴏ "%1" — ᴛʜᴀᴛ'ꜱ ꜰᴏʀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴꜱ ᴏɴʟʏ.
+handlerEvents.onlyAdminToUseOnReaction=ɪ ᴄᴀɴ'ᴛ ᴘʀᴏᴄᴇꜱꜱ ʏᴏᴜʀ ʀᴇᴀᴄᴛɪᴏɴ ᴏɴ "%1" — ᴛʜᴀᴛ'ꜱ ꜰᴏʀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴꜱ ᴏɴʟʏ.
+handlerEvents.onlyAdminBot2=ɪ ᴄᴀɴ'ᴛ ʟᴇᴛ ʏᴏᴜ ᴜꜱᴇ "%1" — ᴛʜᴀᴛ'ꜱ ꜰᴏʀ ᴍʏ ʙᴏᴛ ᴀᴅᴍɪɴꜱ ᴏɴʟʏ.
+handlerEvents.onlyAdminBot2ToUseOnReply=ɪ ᴄᴀɴ'ᴛ ᴘʀᴏᴄᴇꜱꜱ ʏᴏᴜʀ ʀᴇᴘʟʏ ᴛᴏ "%1" — ᴛʜᴀᴛ'ꜱ ꜰᴏʀ ᴍʏ ʙᴏᴛ ᴀᴅᴍɪɴꜱ ᴏɴʟʏ.
+handlerEvents.onlyAdminBot2ToUseOnReaction=ɪ ᴄᴀɴ'ᴛ ᴘʀᴏᴄᴇꜱꜱ ʏᴏᴜʀ ʀᴇᴀᴄᴛɪᴏɴ ᴏɴ "%1" — ᴛʜᴀᴛ'ꜱ ꜰᴏʀ ᴍʏ ʙᴏᴛ ᴀᴅᴍɪɴꜱ ᴏɴʟʏ.
+handlerEvents.waitingForCommand=ɪ'ᴍ ꜱᴛɪʟʟ ᴄᴏᴏʟɪɴɢ ᴅᴏᴡɴ — ᴘʟᴇᴀꜱᴇ ɢɪᴠᴇ ᴍᴇ %1ꜱ ᴍᴏʀᴇ ꜱᴇᴄᴏɴᴅꜱ ʙᴇꜰᴏʀᴇ ʏᴏᴜ ᴛʀʏ ᴛʜᴀᴛ ᴀɢᴀɪɴ.
+handlerEvents.errorOccurred=ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ ᴡʜɪʟᴇ ɪ ᴡᴀꜱ ʀᴜɴɴɪɴɢ "%2" ꜰᴏʀ ʏᴏᴜ.\n\n%3
+handlerEvents.errorOccurred2=ɪ ʀᴀɴ ɪɴᴛᴏ ᴀɴ ᴇʀʀᴏʀ ᴡʜɪʟᴇ ᴄʜᴀᴛᴛɪɴɢ ᴡɪᴛʜ ʏᴏᴜ ᴠɪᴀ "%2".\n\n%3
+handlerEvents.errorOccurred3=ꜱᴏᴍᴇᴛʜɪɴɢ ʙʀᴏᴋᴇ ᴡʜɪʟᴇ ɪ ᴡᴀꜱ ʜᴀɴᴅʟɪɴɢ ʏᴏᴜʀ ʀᴇᴘʟʏ ᴛᴏ "%2".\n\n%3
+handlerEvents.errorOccurred4=ꜱᴏᴍᴇᴛʜɪɴɢ ʙʀᴏᴋᴇ ᴡʜɪʟᴇ ɪ ᴡᴀꜱ ʜᴀɴᴅʟɪɴɢ ʏᴏᴜʀ ʀᴇᴀᴄᴛɪᴏɴ ᴏɴ "%2".\n\n%3
+handlerEvents.errorOccurred5=ɪ ʜɪᴛ ᴀɴ ᴇʀʀᴏʀ ᴡʜɪʟᴇ ᴘʀᴏᴄᴇꜱꜱɪɴɢ ᴛʜᴇ ᴇᴠᴇɴᴛ "%2".\n\n%3
+handlerEvents.errorOccurred6=ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ ᴡʜɪʟᴇ ɪ ᴡᴀꜱ ʀᴜɴɴɪɴɢ onEvent ᴏꜰ "%2".\n\n%3
+handlerEvents.errorOccurred7=ɪ ʜɪᴛ ᴀɴ ᴜɴᴇxᴘᴇᴄᴛᴇᴅ ᴇʀʀᴏʀ ɪɴ onAnyEvent ᴏꜰ "%2".\n\n%3
+handlerEvents.cannotFindCommandName=ɪ ᴄᴀɴ'ᴛ ꜰɪɢᴜʀᴇ ᴏᴜᴛ ᴡʜɪᴄʜ ᴄᴏᴍᴍᴀɴᴅ ɪꜱ ᴛɪᴇᴅ ᴛᴏ ᴛʜɪꜱ ʀᴇᴘʟʏ ᴏꜰ ʏᴏᴜʀꜱ.
+handlerEvents.cannotFindCommand=ɪ ᴄᴀɴ'ᴛ ꜰɪɴᴅ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ "%1" ʟɪɴᴋᴇᴅ ᴛᴏ ʏᴏᴜʀ ʀᴇᴘʟʏ.
+handlerEvents.spamBanned=ɪ'ᴠᴇ ʜᴀᴅ ᴛᴏ ᴍᴜᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ ꜰᴏʀ %1 ʜᴏᴜʀꜱ ʙᴇᴄᴀᴜꜱᴇ ᴏꜰ ᴄᴏᴍᴍᴀɴᴅ ꜱᴘᴀᴍ.\n\nᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ ᴏʀ ᴀꜱᴋ ᴀɴ ᴀᴅᴍɪɴ ᴛᴏ ᴜɴʙᴀɴ ʏᴏᴜ.
+handlerEvents.spamBannedInline=ɪ'ᴍ ᴄᴜʀʀᴇɴᴛʟʏ ꜱɪʟᴇɴᴄᴇᴅ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ ᴅᴜᴇ ᴛᴏ ꜱᴘᴀᴍ.
+handlerEvents.onlyPrefix=ᴛʜᴀᴛ'ꜱ ᴊᴜꜱᴛ ᴍʏ ᴘʀᴇꜰɪx — ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴀᴅᴅ ᴀ ᴄᴏᴍᴍᴀɴᴅ ᴀꜰᴛᴇʀ ɪᴛ. ᴛʀʏ %1help ᴛᴏ ꜱᴇᴇ ᴡʜᴀᴛ ɪ ᴄᴀɴ ᴅᴏ!
+handlerEvents.onlyPrefixLord=ᴛʜᴀᴛ'ꜱ ᴊᴜꜱᴛ ᴍʏ ᴘʀᴇꜰɪx. ᴘᴇʀʜᴀᴘꜱ ʏᴏᴜ ᴡᴀɴᴛᴇᴅ ᴏɴᴇ ᴏꜰ ᴛʜᴇꜱᴇ:
+handlerEvents.noPrefixReminder=ʏᴏᴜ ᴅᴏɴ'ᴛ ɴᴇᴇᴅ ᴀɴʏ ᴘʀᴇꜰɪx ᴛᴏ ᴜꜱᴇ ᴍᴇ, ᴊᴜꜱᴛ ᴛᴇʟʟ ᴍᴇ ᴡʜᴀᴛ ᴛᴏ ᴅᴏ.
+handlerEvents.commandNotFoundLord=ɪ ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴀɴʏ ᴄᴏᴍᴍᴀɴᴅ ᴄᴀʟʟᴇᴅ "%1". ᴍᴀʏʙᴇ ʏᴏᴜ ᴍᴇᴀɴᴛ ᴏɴᴇ ᴏꜰ ᴛʜᴇꜱᴇ:
+handlerEvents.commandSuggestion= » ᴅɪᴅ ʏᴏᴜ ᴍᴇᴀɴ: %1%2
+handlerEvents.notEnoughMoney=ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴇɴᴏᴜɢʜ ꜰᴏʀ ᴛʜᴀᴛ.\n» ɴᴇᴇᴅᴇᴅ: $%1\n» ʏᴏᴜʀ ʙᴀʟᴀɴᴄᴇ: $%2\n» ꜱᴛɪʟʟ ꜱʜᴏʀᴛ: $%3
+handlerEvents.onlyPremium=ᴛʜɪꜱ ɪꜱ ᴀ ᴘʀᴇᴍɪᴜᴍ ꜰᴇᴀᴛᴜʀᴇ — ɪ ᴄᴀɴ ᴏɴʟʏ ᴅᴏ ɪᴛ ꜰᴏʀ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ.
+handlerEvents.onlyDev=ɪ ᴄᴀɴ ᴏɴʟʏ ᴅᴏ ᴛʜᴀᴛ ꜰᴏʀ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀꜱ.
+handlerEvents.noPermission=ꜱᴏʀʀʏ, ɪ ᴄᴀɴ'ᴛ ʟᴇᴛ ʏᴏᴜ ᴅᴏ ᴛʜᴀᴛ.
+
+# bot/autoUptime.js
+autoUptime.autoUptimeTurnedOn=✅ ᴀᴜᴛᴏᴜᴘᴛɪᴍᴇ ᴍᴏᴅᴇ ɪꜱ ɴᴏᴡ ᴀᴄᴛɪᴠᴇ
+
+# database/controller/index.js
+indexController.connectingMongoDB=ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ MongoDB...
+indexController.connectMongoDBSuccess=✅ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ MongoDB
+indexController.connectMongoDBError=ᴇʀʀᴏʀ ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ MongoDB:
+indexController.connectingMySQL=ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ SQLite...
+indexController.connectMySQLSuccess=✅ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ SQLite
+indexController.connectMySQLError=ᴇʀʀᴏʀ ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ SQLite:
+
+# updater.js
+updater.updateTooFast=⏳ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ ᴀᴛ ʟᴇᴀꜱᴛ 5 ᴍɪɴᴜᴛᴇꜱ ᴀғᴛᴇʀ ᴛʜᴇ ʟᴀᴛᴇꜱᴛ ᴄᴏᴍᴍɪᴛ. %1 ᴍɪɴᴜᴛᴇꜱ %2 ꜱᴇᴄᴏɴᴅꜱ ʀᴇᴍᴀɪɴɪɴɢ
+updater.latestVersion=✅ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴛʜᴇ ʟᴀᴛᴇꜱᴛ ᴠᴇʀꜱɪᴏɴ
+updater.cantFindVersion=⚠️ ᴜɴᴅᴇғɪɴᴇᴅ ᴠᴇʀꜱɪᴏɴ ᴅᴇᴛᴇᴄᴛᴇᴅ (%1). ᴄʜᴇᴄᴋ ʏᴏᴜʀ package.json
+updater.newVersions=📦 %1 ɴᴇᴡ ᴠᴇʀꜱɪᴏɴ(ꜱ) ᴀᴠᴀɪʟᴀʙʟᴇ — ꜱᴛᴀʀᴛɪɴɢ ᴜᴘᴅᴀᴛᴇ...
+updater.updateSuccess=✅ ᴜᴘᴅᴀᴛᴇ ꜱᴜᴄᴄᴇꜱꜱғᴜʟ%1
+updater.configChanged=⚠️ %1 ʜᴀꜱ ᴄʜᴀɴɢᴇᴅ — ʀᴇᴠɪᴇᴡ ʏᴏᴜʀ config.json
+updater.installingPackages=ɪɴꜱᴛᴀʟʟɪɴɢ ᴅᴇᴘᴇɴᴅᴇɴᴄɪᴇꜱ...
+updater.installSuccess=✅ ᴅᴇᴘᴇɴᴅᴇɴᴄɪᴇꜱ ɪɴꜱᴛᴀʟʟᴇᴅ — ʀᴇꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴀᴘᴘʟʏ ᴄʜᴀɴɢᴇꜱ
+updater.backupSuccess=✅ ᴄʜᴀɴɢᴇᴅ ғɪʟᴇꜱ ʙᴀᴄᴋᴇᴅ ᴜᴘ ᴛᴏ %1
+updater.restartToApply=. ʀᴇꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴀᴘᴘʟʏ ᴛʜᴇ ɴᴇᴡ ᴠᴇʀꜱɪᴏɴ
+updater.skipFile=⏭️ ꜱᴋɪᴘᴘᴇᴅ ᴜᴘᴅᴀᴛᴇ ғᴏʀ %1 (ꜱᴋɪᴘ ᴄᴏᴍᴍᴇɴᴛ: %2)
+
+# dashboard/routes/verifyfbid.js
+verifyfbid.sendCode=ʏᴏᴜʀ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ:\n%1\nᴛʜɪꜱ ᴄᴏᴅᴇ ᴇxᴘɪʀᴇꜱ ɪɴ %2 ᴍɪɴᴜᴛᴇꜱ
+
+# utils.js
+utils.errorOccurred=❌ ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ:\n\n%1
+
+# for command
+command.restartedBot=🔄 ʙᴏᴛ ʜᴀꜱ ʙᴇᴇɴ ʀᴇꜱᴛᴀʀᴛᴇᴅ
+
+# dashboard/app.js
+app.googleApiRefreshTokenExpired=ɢᴏᴏɢʟᴇ ᴀᴘɪ ʀᴇғʀᴇꜱʜ ᴛᴏᴋᴇɴ ʜᴀꜱ ᴇxᴘɪʀᴇᴅ ᴏʀ ʙᴇᴇɴ ʀᴇᴠᴏᴋᴇᴅ. ɢᴇᴛ ᴀ ɴᴇᴡ ᴛᴏᴋᴇɴ: https://developers.google.com/oauthplayground/
+app.tooManyRequests=⏳ ᴛᴏᴏ ᴍᴀɴʏ ʀᴇQᴜᴇꜱᴛꜱ. ᴘʟᴇᴀꜱᴇ ꜱʟᴏᴡ ᴅᴏᴡɴ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ.
+app.notPermissionChangeFbstate=🔒 ʏᴏᴜ ᴅᴏ ɴᴏᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪꜱꜱɪᴏɴ ᴛᴏ ᴄʜᴀɴɢᴇ fbstate.
+app.notFoundFbstate=ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ᴠᴀʟɪᴅ fbstate.
+app.changedFbstateSuccess=✅ fbstate ᴜᴘᴅᴀᴛᴇᴅ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ!
+app.serverError=ꜱᴇʀᴠᴇʀ ᴇʀʀᴏʀ — ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ.

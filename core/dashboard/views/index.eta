@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= it.botName %> — Control Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="orb orb-4"></div>
+<div class="grid-field"></div>
+<div class="scanline"></div>
+<div class="top-beam"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="brand-pulse">
+        <span class="brand-dot"></span>
+        <span class="brand-dot-ring"></span>
+      </div>
+      <span class="brand-name mono"><%= it.botName %></span>
+      <span class="brand-sep">╱</span>
+      <span class="brand-tag">CONTROL PANEL</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-prefix mono">prefix <span class="nav-prefix-val"><%= it.prefix %></span></span>
+      <div class="status-pill" id="globalStatus">
+        <span class="pill-dot"></span>
+        <span class="pill-text">CONNECTING</span>
+      </div>
+    </div>
+  </div>
+  <div class="nav-beam"></div>
+</nav>
+
+<main class="main">
+
+  <section class="stats-row" id="statsRow">
+    <div class="stat-card" data-c="green">
+      <div class="card-corner cc-tl"></div>
+      <div class="card-corner cc-br"></div>
+      <div class="stat-glyph">⬡</div>
+      <div class="stat-label">ACTIVE BOTS</div>
+      <div class="stat-value" id="statBots">—</div>
+    </div>
+    <div class="stat-card" data-c="blue">
+      <div class="card-corner cc-tl"></div>
+      <div class="card-corner cc-br"></div>
+      <div class="stat-glyph">◉</div>
+      <div class="stat-label">ACCOUNTS</div>
+      <div class="stat-value" id="statAccounts">—</div>
+    </div>
+    <div class="stat-card" data-c="cyan">
+      <div class="card-corner cc-tl"></div>
+      <div class="card-corner cc-br"></div>
+      <div class="stat-glyph">⌘</div>
+      <div class="stat-label">COMMANDS</div>
+      <div class="stat-value" id="statCmds">—</div>
+    </div>
+    <div class="stat-card" data-c="amber">
+      <div class="card-corner cc-tl"></div>
+      <div class="card-corner cc-br"></div>
+      <div class="stat-glyph">◷</div>
+      <div class="stat-label">UPTIME</div>
+      <div class="stat-value mono sm" id="statUptime">—</div>
+    </div>
+    <div class="stat-card" data-c="purple">
+      <div class="card-corner cc-tl"></div>
+      <div class="card-corner cc-br"></div>
+      <div class="stat-glyph">▣</div>
+      <div class="stat-label">MEMORY</div>
+      <div class="stat-value mono sm" id="statMem">—</div>
+    </div>
+  </section>
+
+  <div class="grid-2">
+
+    <section class="panel panel-green">
+      <div class="panel-head">
+        <span class="panel-icon">⬡</span>
+        <span class="panel-title">BOT INSTANCES</span>
+        <span class="panel-badge" id="botBadge">0</span>
+      </div>
+      <div class="panel-body" id="botList">
+        <div class="empty-state"><div class="loader"></div><span>Loading...</span></div>
+      </div>
+    </section>
+
+    <section class="panel panel-blue">
+      <div class="panel-head">
+        <span class="panel-icon">◉</span>
+        <span class="panel-title">ACCOUNTS</span>
+        <span class="panel-badge" id="accBadge">0</span>
+      </div>
+      <div class="panel-body" id="accList">
+        <div class="empty-state"><div class="loader"></div><span>Loading...</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="panel panel-multi mt">
+    <div class="panel-head">
+      <span class="panel-icon">⌘</span>
+      <span class="panel-title">COMMANDS</span>
+      <span class="panel-badge" id="cmdBadge">0</span>
+      <div class="panel-tools">
+        <input type="text" class="search-box" id="cmdSearch" placeholder="Search...">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="ftab active" data-cat="all">ALL</button>
+        </div>
+      </div>
+    </div>
+    <div class="cmd-grid" id="cmdGrid">
+      <div class="empty-state"><div class="loader"></div><span>Loading...</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span class="mono dim">GOATBOT V2 <span class="footer-sep">╱</span> SIFAT <span class="footer-sep">╱</span> <span id="footerTime">--:--:--</span></span>
+</footer>
+
+<script src="/public/main.js"></script>
+</body>
+</html>

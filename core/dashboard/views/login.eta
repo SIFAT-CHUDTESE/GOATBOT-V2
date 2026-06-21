@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access — GoatBot Control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#04080f;
+--card:rgba(4,10,22,0.94);
+--ac:#00c8f0;
+--ac2:#00a0c8;
+--glow:rgba(0,200,240,0.22);
+--glowS:rgba(0,200,240,0.08);
+--text:#cce8ff;
+--dim:#4a6a88;
+--border:rgba(0,170,210,0.16);
+--borderH:rgba(0,200,240,0.45);
+--red:#ff3355;
+--green:#00f0a0;
+--mono:'JetBrains Mono',monospace;
+--sans:'Inter',sans-serif;
+}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--sans);}
+body{
+display:flex;align-items:center;justify-content:center;min-height:100vh;
+overflow:hidden;position:relative;
+}
+
+.bg-deep{
+position:fixed;inset:0;z-index:0;
+background:
+  radial-gradient(ellipse 70% 60% at 20% 20%, rgba(0,80,160,0.09) 0%, transparent 60%),
+  radial-gradient(ellipse 80% 60% at 80% 85%, rgba(0,40,100,0.11) 0%, transparent 60%),
+  radial-gradient(rgba(0,140,185,0.038) 1px, transparent 1px);
+background-size:100% 100%,100% 100%,28px 28px;
+}
+.bg-lines{
+position:fixed;inset:0;z-index:0;pointer-events:none;
+background:
+  repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(0,130,170,0.03) 60px),
+  repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(0,130,170,0.02) 60px);
+}
+.top-beam{
+position:fixed;top:0;left:0;right:0;height:1px;z-index:200;
+background:linear-gradient(90deg,transparent 0%,var(--ac) 30%,rgba(0,240,200,0.9) 50%,var(--ac) 70%,transparent 100%);
+box-shadow:0 0 20px var(--ac),0 0 60px rgba(0,200,240,0.25);
+animation:topGlow 3s ease-in-out infinite;
+}
+@keyframes topGlow{0%,100%{opacity:.5}50%{opacity:1}}
+.scan-h{
+position:fixed;left:0;right:0;height:1px;
+background:linear-gradient(90deg,transparent,rgba(0,200,240,0.35),transparent);
+animation:scanDown 9s linear infinite;opacity:.6;z-index:1;
+}
+@keyframes scanDown{0%{top:-1px}100%{top:100vh}}
+
+.wrap{position:relative;z-index:2;width:100%;max-width:420px;padding:24px;}
+
+.brand{text-align:center;margin-bottom:36px;}
+.logo-wrap{
+position:relative;width:80px;height:80px;
+display:flex;align-items:center;justify-content:center;
+margin:0 auto 20px;
+}
+.logo-ring{
+position:absolute;border-radius:50%;border:1px solid rgba(0,200,240,0.22);
+}
+.r1{width:50px;height:50px;animation:rp 3.2s ease-in-out infinite}
+.r2{width:68px;height:68px;animation:rp 3.2s ease-in-out infinite .6s}
+.r3{width:84px;height:84px;animation:rp 3.2s ease-in-out infinite 1.2s}
+@keyframes rp{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.05);opacity:.7}}
+.logo-glyph{
+font-size:28px;position:relative;z-index:1;
+filter:drop-shadow(0 0 10px rgba(0,220,255,0.9));
+}
+.brand h1{
+font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:5px;
+color:#fff;text-shadow:0 0 24px rgba(0,220,255,0.55);
+}
+.brand p{
+font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:3.5px;margin-top:7px;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:16px;
+padding:36px 32px;
+backdrop-filter:blur(24px);
+position:relative;
+box-shadow:0 0 0 1px rgba(0,180,220,0.04),0 8px 40px rgba(0,0,0,0.5),0 0 60px rgba(0,140,200,0.06);
+animation:cardBreath 5s ease-in-out infinite;
+}
+@keyframes cardBreath{
+0%,100%{box-shadow:0 0 0 1px rgba(0,180,220,0.04),0 8px 40px rgba(0,0,0,.5),0 0 60px rgba(0,140,200,.06)}
+50%{box-shadow:0 0 0 1px rgba(0,180,220,0.06),0 8px 40px rgba(0,0,0,.5),0 0 80px rgba(0,180,240,.1)}
+}
+.corner{position:absolute;width:16px;height:16px;}
+.c-tl{top:-1px;left:-1px;border-top:2px solid var(--ac);border-left:2px solid var(--ac);border-radius:16px 0 0 0;}
+.c-tr{top:-1px;right:-1px;border-top:2px solid var(--ac);border-right:2px solid var(--ac);border-radius:0 16px 0 0;}
+.c-bl{bottom:-1px;left:-1px;border-bottom:2px solid var(--ac);border-left:2px solid var(--ac);border-radius:0 0 0 16px;}
+.c-br{bottom:-1px;right:-1px;border-bottom:2px solid var(--ac);border-right:2px solid var(--ac);border-radius:0 0 16px 0;}
+
+.alert{
+display:flex;align-items:center;gap:10px;
+padding:11px 14px;border-radius:8px;margin-bottom:20px;
+background:rgba(255,50,80,0.08);border:1px solid rgba(255,50,80,0.22);
+color:#ff7090;font-family:var(--mono);font-size:12px;
+}
+
+.form-group{margin-bottom:20px;}
+.form-label{
+display:block;font-family:var(--mono);font-size:9px;letter-spacing:3px;
+color:var(--dim);margin-bottom:9px;
+}
+.form-input{
+width:100%;padding:13px 16px;
+background:rgba(0,15,38,0.75);
+border:1px solid var(--border);border-radius:9px;
+color:var(--text);font-family:var(--mono);font-size:14px;
+outline:none;transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.form-input::placeholder{color:rgba(74,106,136,0.55);}
+.form-input:focus{
+background:rgba(0,20,50,0.85);
+border-color:var(--ac);
+box-shadow:0 0 0 3px var(--glowS),0 0 20px rgba(0,200,240,0.08);
+}
+
+.btn{
+width:100%;padding:14px;margin-top:8px;
+background:linear-gradient(135deg,rgba(0,160,210,0.18),rgba(0,100,170,0.14));
+border:1px solid var(--borderH);border-radius:9px;
+color:#fff;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:2.5px;
+cursor:pointer;outline:none;transition:all .2s;
+display:flex;align-items:center;justify-content:center;gap:12px;
+position:relative;overflow:hidden;
+}
+.btn::after{
+content:'';position:absolute;inset:0;
+background:linear-gradient(135deg,rgba(0,200,240,0.1),transparent);
+opacity:0;transition:opacity .2s;
+}
+.btn:hover{
+background:linear-gradient(135deg,rgba(0,190,240,0.25),rgba(0,140,200,0.2));
+box-shadow:0 0 30px rgba(0,200,240,0.18),0 4px 20px rgba(0,0,0,0.3);
+border-color:var(--ac);
+}
+.btn:hover::after{opacity:1}
+.btn:active{transform:scale(0.98);}
+.btn-arrow{font-size:16px;transition:transform .2s;}
+.btn:hover .btn-arrow{transform:translateX(4px);}
+
+.footer-note{
+text-align:center;margin-top:24px;
+font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:2px;
+}
+.dot{
+display:inline-block;width:5px;height:5px;border-radius:50%;
+background:var(--green);box-shadow:0 0 8px var(--green);
+margin-right:8px;vertical-align:middle;
+animation:dp 2s ease-in-out infinite;
+}
+@keyframes dp{0%,100%{opacity:1}50%{opacity:.35}}
+</style>
+</head>
+<body>
+<div class="bg-deep"></div>
+<div class="bg-lines"></div>
+<div class="top-beam"></div>
+<div class="scan-h"></div>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="logo-wrap">
+      <div class="logo-ring r1"></div>
+      <div class="logo-ring r2"></div>
+      <div class="logo-ring r3"></div>
+      <span class="logo-glyph">⚡</span>
+    </div>
+    <h1>GOATBOT</h1>
+    <p>MULTIBOT CONTROL SYSTEM</p>
+  </div>
+
+  <div class="card">
+    <span class="corner c-tl"></span>
+    <span class="corner c-tr"></span>
+    <span class="corner c-bl"></span>
+    <span class="corner c-br"></span>
+
+    <% if (it.error) { %>
+    <div class="alert"><span>⚠</span><span><%= it.error %></span></div>
+    <% } %>
+
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <label class="form-label">USERNAME</label>
+        <input type="text" name="username" class="form-input" placeholder="admin" autocomplete="username" required autofocus>
+      </div>
+      <div class="form-group">
+        <label class="form-label">PASSWORD</label>
+        <input type="password" name="password" class="form-input" placeholder="••••••••" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn">
+        <span>AUTHENTICATE</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </form>
+  </div>
+
+  <div class="footer-note"><span class="dot"></span>SECURE CONNECTION ESTABLISHED</div>
+</div>
+</body>
+</html>

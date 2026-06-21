@@ -1,0 +1,76 @@
+{
+  "optionsFca": {
+    "_note": "All fca-sifu connection & behaviour options. These replace config.json's optionsFca block.",
+
+    "online": true,
+    "selfListen": true,
+    "selfListenEvent": true,
+    "listenEvents": true,
+    "listenTyping": true,
+    "updatePresence": false,
+    "autoMarkDelivery": false,
+    "autoMarkRead": true,
+    "autoReconnect": true,
+    "forceLogin": true,
+    "simulateTyping": true,
+    "emitReady": true,
+
+    "stealthMode": true,
+    "_stealthMode_note": "true = forces updatePresence:false + online:false + simulateTyping:false for stealth. false = use above values as-is.",
+
+    "randomUserAgent": false,
+    "userAgent": "Mozilla/5.0 (Linux; Android 14; SM-S928B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "_userAgent_note": "Ignored when randomUserAgent=true",
+
+    "persona": "desktop",
+    "_persona_note": "desktop | mobile — affects headers sent to Facebook",
+
+    "proxy": null,
+    "_proxy_note": "HTTP/SOCKS proxy string e.g. 'socks5://user:pass@host:port' or null to disable",
+
+    "bypassRegion": null,
+    "_bypassRegion_note": "Force a Facebook edge region e.g. 'prn', 'lax', 'sin'. null = auto",
+
+    "maxConcurrentRequests": 5,
+    "maxRequestsPerMinute": 50,
+    "requestCooldownMs": 60000,
+    "errorCacheTtlMs": 300000,
+    "_rateLimit_note": "Request throttle. Increase maxConcurrentRequests/maxRequestsPerMinute for busy bots, decrease for safer operation.",
+
+    "logLevel": "warn",
+    "_logLevel_note": "verbose | info | warn | error | silent"
+  },
+
+  "antiSuspension": {
+    "enabled": true,
+    "warmupOnStart": false,
+    "_note": "warmupOnStart=true throttles messages for 20 min after fresh start to avoid FB spam detection."
+  },
+
+  "healthMonitor": {
+    "enabled": true,
+    "logIntervalMs": 3600000,
+    "_note": "Logs connection health periodically. logIntervalMs in milliseconds."
+  },
+
+  "antiSpam": {
+    "enabled": false,
+    "dupeTtlMs": 0,
+    "maxBroadcastThreads": 5,
+    "_note": "Blocks duplicate messages sent within dupeTtlMs ms. Set enabled=false or dupeTtlMs=0 to disable. maxBroadcastThreads = max threads bot can broadcast to at once."
+  },
+
+  "shield": {
+    "enabled": true,
+    "hourlyLimit": 9999,
+    "dailyLimit": 99999,
+    "msgDelay": 200,
+    "threadDelay": 400,
+    "burstLimit": 99,
+    "maxConsecutive": 99,
+    "restMinMs": 3000,
+    "restMaxMs": 5000,
+    "quietHours": false,
+    "_note": "Anti-ban rate limiter. enabled=false → disables all Shield delays. msgDelay: ms between each outgoing message (default 1500). threadDelay: ms between messages in same thread. burstLimit/maxConsecutive: how many messages before a rest pause. restMinMs/restMaxMs: rest period duration. quietHours=false disables the 1.8× night multiplier."
+  }
+}

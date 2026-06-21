@@ -1,0 +1,10 @@
+services:
+  - type: worker
+    name: goatbot
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production

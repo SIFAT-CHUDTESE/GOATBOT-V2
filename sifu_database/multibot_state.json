@@ -1,0 +1,11 @@
+{
+  "savedAt": "2026-05-31T01:35:39.293Z",
+  "bots": [
+    {
+      "id": 1,
+      "accountFile": "/home/runner/workspace/accounts/account.txt",
+      "status": "running",
+      "restartCount": 0
+    }
+  ]
+}

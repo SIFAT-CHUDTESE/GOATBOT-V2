@@ -1,0 +1,23 @@
+[phases.setup]
+nixPkgs = [
+  "python3",
+  "python312Packages.setuptools",
+  "pkg-config",
+  "cairo",
+  "pango",
+  "pixman",
+  "libpng",
+  "libjpeg",
+  "giflib",
+  "librsvg",
+  "gcc",
+  "gnumake"
+]
+
+[phases.install]
+cmds = [
+  "npm install --legacy-peer-deps"
+]
+
+[start]
+cmd = "node index.js"
