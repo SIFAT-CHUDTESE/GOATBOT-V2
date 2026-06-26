@@ -20,7 +20,7 @@
   "noPrefix": "adminOnly",
   "prefix_note": "use command noPrefix= on = alluser |off = off for everyone | adminonly = role 2/4",
   "adminOnly": {
-    "enable": false,
+    "enable": true,
     "ignoreCommand": [],
     "whitelistUsers": []
   },
