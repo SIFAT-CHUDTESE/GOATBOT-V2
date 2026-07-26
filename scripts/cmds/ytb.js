@@ -4,7 +4,7 @@ const path  = require("path");
 const fs    = require("fs-extra");
 const axios = require("axios");
 
-const SIFAT_CDTESE = "https://raw.githubusercontent.com/MYB-SIFAT/SIFATChudtese/refs/heads/main/sifatapichudtese.json";
+const SIFAT_CDTESE = "https://raw.githubusercontent.com/FX-SIFAT/SIFATChudtese/refs/heads/main/sifatapichudtese.json";
 const SIFAT_SXY    = "";
 
 let SIFAT = process.env.SIFU_API_BASE ? process.env.SIFU_API_BASE.replace(/\/+$/, "") : null;
